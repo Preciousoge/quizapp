@@ -66,13 +66,21 @@ function pickAnswer(e){
 	if(shuffleQuestions.length > currentQuestionIndex + 1){
 		nextButton.classList.remove('hide')
 	}else{
-		startButton.innerText = "Restart"
-		startButton.classList.remove('hide')
+
+
+		document.getElementById('right-answers').innerHTML = 
+
+
+		"You scored " +   countRightAnswers + " out of " +    questions.length 
+
+		/*startButton.innerText = "Restart"
+		startButton.classList.remove('hide')*/
+
 	}
 	if (selectedOption.dataset = correct) {
     countRightAnswers++
 	}
-
+//document.getElementById('right-answers').innerHTML = "you scored  " +    countRightAnswers + "out of" +    questions.length
 }
 
 function setStatusClass(element, correct){
