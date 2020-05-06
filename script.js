@@ -60,7 +60,7 @@ function pickAnswer(e){
 	const selectedOption = e.target
 	const correct = selectedOption.dataset.correct
 	setStatusClass(document.body, correct)
-  Array.from(answerButtonsElement.children).forEach(button => {
+  Array.from(answerbuttonElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
 	if(shuffleQuestions.length > currentQuestionIndex + 1){
@@ -69,7 +69,7 @@ function pickAnswer(e){
 		startButton.innerText = "Restart"
 		startButton.classList.remove('hide')
 	}
-	if (selectedButton.dataset = correct) {
+	if (selectedOption.dataset = correct) {
     countRightAnswers++
 	}
 
