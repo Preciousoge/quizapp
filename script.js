@@ -1,6 +1,6 @@
 
 const startButton = document.getElementById('startButton')
-
+const nextButton = document.getElementById('nextButton')
 const questionContainerElement = document.getElementById('question-container')
 
 const questionElement = document.getElementById('question')
@@ -12,17 +12,27 @@ let shuffleQuestions, currentQuestionIndex
 startButton.addEventListener('click', start)
 
 function start(){
-	console.log('oya')
+	//console.log('oya')
 	startButton.classList.add('hide')
-	shuffleQuestions = questions.sort(() => Math.random()- .5)
+	shuffledQuestions = questions.sort(() => Math.random()- .5)
 	currentQuestionIndex = 0
 	questionContainerElement.classList.remove('hide')
 	nextQuestion()
 }
 
 
+function reset() {
+	nextButton.classList.add('hide')
+	while (answerbuttonElement.firstChild){
+		answerbuttonElement.removeChild
+			(answerbuttonElement.firstChild)
+	}	
+}
+
+
 function nextQuestion(){
-	showQuestion(shuffleQuestions[currentQuestionIndex])
+	reset()
+	showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
 function showQuestion(question){
@@ -30,15 +40,24 @@ function showQuestion(question){
 	question.answers.forEach(answer => {
 		const button = document.createElement('button')
 		button.innerText = answer.text
-		button.classList.add('buttons')
+		button.classList.add('btn')
 		if (answer.correct) {
 			button.dataset.correct = answer.correct 
 		}
 		button.addEventListener('click', pickAnswer)
-		answerbuttonElement.appendChild('buttons')
+		answerbuttonElement.appendChild(button)
 	})
 }
-function pickAnswer(){
+function pickAnswer(e){
+
+
+	/**if(currentQuestion == totQuestions-1){
+		container.style.display = 'none'
+		result.style.display ='You scored' + score
+		return
+	}*/
+
+	nextQuestion(currentQuestion)
 
 }
 
