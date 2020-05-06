@@ -101,7 +101,7 @@ const questions =[
 		{text: 'Moscow', correct:true},
 		{text: 'Munich', correct:false}
 		]
-	}
+	},
 	{
 		question: 'Who is the oldest player to score in a Champions league game?',
 		answers: [
@@ -130,5 +130,5 @@ const questions =[
 		{text: 'Ansu Fati',correct:true},
 		{text: 'Peter Ofori-Quaye',correct:false}
 		]
-	}*/
+	}
 ]
