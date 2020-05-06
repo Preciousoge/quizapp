@@ -48,11 +48,11 @@ body{
 	border-color:black;
 }
 
-.buttons.correct{
+.btn.correct{
 	--hue: var(--hue-right);
 }
 
-.buttons.wrong{
+.btn.wrong{
 	--hue: var(--hue-wrong);
 }
 

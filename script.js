@@ -10,29 +10,24 @@ const answerbuttonElement = document.getElementById('answer')
 let shuffleQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', start)
+nextButton.addEventListener('click',() => {
+	currentQuestionIndex ++
+	nextQuestion()
+})
 
 function start(){
-	//console.log('oya')
+	//console.log('it took more than an hour to cry about this, dear night King, have mercy')
 	startButton.classList.add('hide')
-	shuffledQuestions = questions.sort(() => Math.random()- .5)
+	shuffleQuestions = questions.sort(() => Math.random()- .5)
 	currentQuestionIndex = 0
 	questionContainerElement.classList.remove('hide')
 	nextQuestion()
 }
 
 
-function reset() {
-	nextButton.classList.add('hide')
-	while (answerbuttonElement.firstChild){
-		answerbuttonElement.removeChild
-			(answerbuttonElement.firstChild)
-	}	
-}
-
-
 function nextQuestion(){
 	reset()
-	showQuestion(shuffledQuestions[currentQuestionIndex])
+	showQuestion(shuffleQuestions[currentQuestionIndex])
 }
 
 function showQuestion(question){
@@ -48,17 +43,44 @@ function showQuestion(question){
 		answerbuttonElement.appendChild(button)
 	})
 }
+
+function reset() {
+	nextButton.classList.add('hide')
+	while (answerbuttonElement.firstChild){
+		answerbuttonElement.removeChild
+			(answerbuttonElement.firstChild)
+	}	
+}
+
+
 function pickAnswer(e){
+	const selectedOption = e.target
+	const correct = selectedOption.dataset.correct
 
+	Array.from(answerbuttonElement.children).forEach(button =>{setStatusClass(button, button.dataset.correct)})
 
-	/**if(currentQuestion == totQuestions-1){
-		container.style.display = 'none'
-		result.style.display ='You scored' + score
-		return
-	}*/
+	if(shuffleQuestions.length > currentQuestionIndex + 1){
+		nextButton.classList.remove('hide')
+	}else{
+		startButton.innerText = "Try Again"
+		startButton.classList.remove('hide')
+	}
+	
 
-	nextQuestion(currentQuestion)
+}
 
+function setStatusClass(element, correct){
+	clearStatusClass(element)
+	if (correct) {
+		element.classList.add('correct')
+	}else{
+		element.classList.add('wrong')
+	}
+}
+
+function clearStatusClass(element){
+	element.classList.remove('correct')
+	element.classList.remove('wrong')
 }
 
 const questions =[
@@ -80,4 +102,33 @@ const questions =[
 		{text: 'Munich', correct:false}
 		]
 	}
+	{
+		question: 'Who is the oldest player to score in a Champions league game?',
+		answers: [
+		{text: 'Daniele De Rossi',correct:false},
+		{text: 'Francesco Totti', correct:true},
+		{text: 'Laurent Blanc',correct:false},
+		{text: 'Ryan Giggs',correct:false}
+		]
+	},
+
+	{
+		question: 'What team does Jeff support?😉',
+		answers: [
+		{text: 'Manchester United',correct:false},
+		{text: 'Barcelona', correct:true},
+		{text: 'Bayern Munich',correct:false},
+		{text: 'Inter Milan',correct:false}
+		]
+	},
+
+	{
+		question: 'Who is the youngest player to score in a Champions league game?',
+		answers: [
+		{text: 'Cesc Fabregas',correct:false},
+		{text: 'Eric Haaland', correct:false},
+		{text: 'Ansu Fati',correct:true},
+		{text: 'Peter Ofori-Quaye',correct:false}
+		]
+	}*/
 ]
