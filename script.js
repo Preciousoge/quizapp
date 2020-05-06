@@ -9,6 +9,8 @@ const answerbuttonElement = document.getElementById('answer')
 
 let shuffleQuestions, currentQuestionIndex
 
+let countRightAnswers = 0
+
 startButton.addEventListener('click', start)
 nextButton.addEventListener('click',() => {
 	currentQuestionIndex ++
@@ -22,6 +24,7 @@ function start(){
 	currentQuestionIndex = 0
 	questionContainerElement.classList.remove('hide')
 	nextQuestion()
+	countRightAnswers = 0;
 }
 
 
@@ -56,16 +59,19 @@ function reset() {
 function pickAnswer(e){
 	const selectedOption = e.target
 	const correct = selectedOption.dataset.correct
-
-	Array.from(answerbuttonElement.children).forEach(button =>{setStatusClass(button, button.dataset.correct)})
-
+	setStatusClass(document.body, correct)
+  Array.from(answerButtonsElement.children).forEach(button => {
+    setStatusClass(button, button.dataset.correct)
+  })
 	if(shuffleQuestions.length > currentQuestionIndex + 1){
 		nextButton.classList.remove('hide')
 	}else{
-		startButton.innerText = "Try Again"
+		startButton.innerText = "Restart"
 		startButton.classList.remove('hide')
 	}
-	
+	if (selectedButton.dataset = correct) {
+    countRightAnswers++
+	}
 
 }
 
@@ -87,7 +93,7 @@ const questions =[
 	{
 		question : 'Who is the highest goalscorer in the history of the UEFA Champions League?',
 		answers: [
-			{ text: 'Zlatan Ibrahimovic', correct:false},
+			{ text: 'Zlatan Ibrahimovic', correct: false},
 			{ text: 'Raul', correct: false},
 			{ text: 'Cristiano Ronaldo', correct: true},
 			{ text : 'Lionel Messi', correct: false}

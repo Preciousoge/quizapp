@@ -3,8 +3,8 @@
 	font-family: 'Roboto Slab', serif;
 }
 
-.root {
-	--hue-neutral: 300;
+:root {
+	--hue-neutral: 200;
 	--hue-wrong: 0 ;
 	--hue-right: 145 ;
 }
@@ -18,14 +18,25 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #5dbcd2;
+	background-color: hsl(var(--hue), 100%, 20%);
+}
+
+body.correct{
+	--hue: var(--hue-correct);
+}
+
+body.wrong{
+	--hue: var(--hue-correct);
 }
 
 #title{
 	font-size: 20px;
-	margin-top: 2px;
-	padding: 10px;
-	background: 
+	margin-top: 0px;
+	padding: 8px 5px;
+	max-width: 250px;
+	max-height: 60px;
+
+	
 }
 
 .container{
@@ -33,9 +44,11 @@ body{
 	max-width: 75%;
 	border-radius: 8px;
 	background-color: #fcfeff;
+	box-shadow: 0 0 10px 2px;
 	padding: 15px;
 	display: flex;
 	flex-direction:column;
+	align-items: center;
 }
 
 .answer-btn{
@@ -51,6 +64,8 @@ body{
 	border: 1px solid #5dbcd2;
 	border-radius: 3px;
 	background-color: #5dbcd3;
+	padding: 5px 10px;
+	
 }
 
 .btn:hover {
@@ -59,17 +74,25 @@ body{
 }
 
 .btn.correct{
-	--hue: var(--hue-right);
+	--hue: var(--hue-correct);
+	color: white;
 }
 
 .btn.wrong{
 	--hue: var(--hue-wrong);
+	color: white;
 }
 
 .startButton-btn, .nextButton-btn{
 	font-size: 1.2rem;
 	font-weight: bold;
 	padding: 8px 16px;
+
+}
+
+.startButton-btn:hover, .nextButton-btn:hover{
+	border-color:black;
+	background-color: yellow;
 }
 
 .controls{
